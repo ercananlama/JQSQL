@@ -1,0 +1,60 @@
+[
+  {
+    "ProductCode": "12345",
+    "Title": "MyPhone",
+    "Description": "Best smartphone ever",
+    "Price": 1050,
+    "Currency": "$",
+    "Stocks": {
+      "Sales": [
+        {
+          "Date": "01-01-2013",
+          "ItemCount": 50
+        },
+        {
+          "Date": "03-01-2013",
+          "ItemCount": 120
+        }
+      ],
+      "Purchases": [
+        {
+          "Date": "02-01-2013",
+          "ItemCount": 10
+        },
+        {
+          "Date": "08-01-2013",
+          "ItemCount": 35
+        }
+      ]
+    }
+  },
+  {
+    "ProductCode": "13579",
+    "Title": "PhoneWorld",
+    "Description": "Connect and communicate easily, best price",
+    "Price": 650,
+    "Currency": "$",
+    "Stocks": {
+      "Sales": [
+        {
+          "Date": "10-01-2013",
+          "ItemCount": 60
+        },
+        {
+          "Date": "13-01-2013",
+          "ItemCount": 19
+        }
+      ],
+      "Purchases": [
+        {
+          "Date": "22-01-2013",
+          "ItemCount": 23
+        },
+        {
+          "Date": "23-01-2013",
+          "ItemCount": 40
+        }
+      ]
+    }
+  }
+]

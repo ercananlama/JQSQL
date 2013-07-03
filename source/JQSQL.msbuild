@@ -1,0 +1,22 @@
+<Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	
+  <PropertyGroup>
+		<SolutionName>.\JQSQL.sln</SolutionName>
+    <Configuration>Release</Configuration>
+	</PropertyGroup>
+  
+  <Target Name="Build">
+    <MSBuild Projects="$(SolutionName)" Properties="Configuration=$(Configuration)"></MSBuild>
+  </Target>
+  
+  <Target Name="CopyOutput">
+    <CreateItem Include=".\JQSQL\bin\$(Configuration)\*.dll">
+      <Output TaskParameter="Include" ItemName="FilesToCopy" />
+    </CreateItem>
+    <Copy SourceFiles="@(FilesToCopy)" DestinationFolder="..\built\"></Copy>
+  </Target>
+  
+	<Target Name="All" DependsOnTargets="Build;CopyOutput">	
+	</Target>
+  
+</Project>
