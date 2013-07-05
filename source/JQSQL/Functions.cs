@@ -9,6 +9,7 @@ using System.Collections;
 //
 using JQSQL.Core;
 using JQSQL.Core.Data;
+using JQSQL.Core.Extensions;
 
 public partial class Functions
 {
@@ -71,11 +72,7 @@ public partial class Functions
         Calculator calculator = new Calculator();
         var max = calculator.GetMax(searchResult);
 
-        if (max != null)
-        {
-            return max.ToString();
-        }
-        return null;
+        return max.ToReturnString();
     }
 
     [Microsoft.SqlServer.Server.SqlFunction]
@@ -87,11 +84,7 @@ public partial class Functions
         Calculator calculator = new Calculator();
         var min = calculator.GetMin(searchResult);
 
-        if (min != null)
-        {
-            return min.ToString();
-        }
-        return null;
+        return min.ToReturnString();
     }
 
     [Microsoft.SqlServer.Server.SqlProcedure()]

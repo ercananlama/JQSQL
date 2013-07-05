@@ -8,21 +8,21 @@
     "Stocks": {
       "Sales": [
         {
-          "Date": "01-01-2013",
+          "Date": "2013-01-01",
           "ItemCount": 50
         },
         {
-          "Date": "03-01-2013",
+          "Date": "2013-01-03",
           "ItemCount": 120
         }
       ],
       "Purchases": [
         {
-          "Date": "02-01-2013",
+          "Date": "2013-01-02",
           "ItemCount": 10
         },
         {
-          "Date": "08-01-2013",
+          "Date": "2013-01-08",
           "ItemCount": 35
         }
       ]
@@ -37,21 +37,21 @@
     "Stocks": {
       "Sales": [
         {
-          "Date": "10-01-2013",
+          "Date": "2013-01-10",
           "ItemCount": 60
         },
         {
-          "Date": "13-01-2013",
+          "Date": "2013-01-13",
           "ItemCount": 19
         }
       ],
       "Purchases": [
         {
-          "Date": "22-01-2013",
+          "Date": "2013-01-22",
           "ItemCount": 23
         },
         {
-          "Date": "23-01-2013",
+          "Date": "2013-01-23",
           "ItemCount": 40
         }
       ]

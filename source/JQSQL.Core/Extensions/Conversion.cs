@@ -100,5 +100,20 @@ namespace JQSQL.Core.Extensions
         {
             return !(value is SimpleJson.JsonArray || value is SimpleJson.JsonObject);
         }
+
+        public static string ToReturnString(this object value)
+        {
+            if (value == null)
+            {
+                return null;
+            }
+
+            if (value is DateTime)
+            {
+                return value.SafeCast<DateTime>().Value.ToString("yyyy-MM-dd hh:mm");
+            }
+
+            return value.ToString();
+        }
     }
 }

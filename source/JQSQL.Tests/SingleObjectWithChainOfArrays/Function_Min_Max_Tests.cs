@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using NUnit.Framework;
+using JQSQL.Core.Extensions;
 
 namespace JQSQL.Tests.SingleObjectWithChainOfArrays
 {
@@ -54,7 +55,7 @@ namespace JQSQL.Tests.SingleObjectWithChainOfArrays
                 yield return new TestCaseData("Messages[1].Sends[0].AttachmentCount", "1").
                     SetName("Single element").
                     SetDescription("Check the min of attachment counts in first send in second message, which should be only 1 item");
-                yield return new TestCaseData("Messages.Receives.SendDate", new DateTime(2013, 1, 21).ToString()).
+                yield return new TestCaseData("Messages.Receives.SendDate", new DateTime(2013, 1, 21).ToReturnString()).
                     SetName("Date type value").
                     SetDescription("Check the min value for date type value");
             }
@@ -76,7 +77,7 @@ namespace JQSQL.Tests.SingleObjectWithChainOfArrays
                 yield return new TestCaseData("Messages[1].Sends[0].AttachmentCount", "1").
                     SetName("Single element").
                     SetDescription("Check the max of attachment counts in first send in second message, which should be only 1 item");
-                yield return new TestCaseData("Messages.Receives.SendDate", new DateTime(2013, 3, 12).ToString()).
+                yield return new TestCaseData("Messages.Receives.SendDate", new DateTime(2013, 3, 12).ToReturnString()).
                     SetName("Date type value").
                     SetDescription("Check the max value for date type value");
             }

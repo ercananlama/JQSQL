@@ -30,7 +30,7 @@ namespace JQSQL.Tests.SingleObjectWithChainOfArrays
         [Test]
         public void When_given_property_not_found_return_last_accessed_content()
         {
-            var expectedValue = "{\"Content\":\"Ok bye\",\"SendDate\":\"25-01-2013\",\"AttachmentCount\":1}";
+            var expectedValue = "{\"Content\":\"Ok bye\",\"SendDate\":\"2013-01-25\",\"AttachmentCount\":1}";
             var foundPropertyValue = Functions.Value(JsonTestData, "Messages[0].Receives[1].TestProperty");
 
             Assert.AreEqual(expectedValue, foundPropertyValue);
@@ -39,7 +39,7 @@ namespace JQSQL.Tests.SingleObjectWithChainOfArrays
         [Test]
         public void When_given_property_refers_an_object_return_it_as_object()
         {
-            var expectedValue = "{\"Content\":\"Ok bye\",\"SendDate\":\"25-01-2013\",\"AttachmentCount\":1}";
+            var expectedValue = "{\"Content\":\"Ok bye\",\"SendDate\":\"2013-01-25\",\"AttachmentCount\":1}";
             var foundPropertyValue = Functions.Value(JsonTestData, "Messages[0].Receives[1]");
 
             Assert.AreEqual(expectedValue, foundPropertyValue);
@@ -65,7 +65,7 @@ namespace JQSQL.Tests.SingleObjectWithChainOfArrays
                 yield return new TestCaseData("Heyy", "Messages[0].Title").SetName("MessageTitle");
                 yield return new TestCaseData("Thelove", "Messages[0].To").SetName("MessageReceiver");
                 yield return new TestCaseData("Whats up?", "Messages[0].Sends[0].Content").SetName("FirstSentMessageContent");
-                yield return new TestCaseData("25-01-2013", "Messages[0].Receives[1].SendDate").SetName("SecondReceivedMessageDate");
+                yield return new TestCaseData("2013-01-25", "Messages[0].Receives[1].SendDate").SetName("SecondReceivedMessageDate");
             }
         }
     }

@@ -62,12 +62,16 @@
     <Compile Include="SingleObjectWithChainOfArrays\Function_Sum_Tests.cs" />
     <Compile Include="SingleObjectWithChainOfArrays\Function_Value_Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-	<Compile Include="..\CommonAssemblyInfo.cs">
+    <Compile Include="..\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="SingleObjectWithChainOfArrays\Base_Function_Tests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\JQSQL.Core\JQSQL.Core.csproj">
+      <Project>{26FE5303-7089-405A-8DFB-2405D55B2EEA}</Project>
+      <Name>JQSQL.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\JQSQL\JQSQL.csproj">
       <Project>{EA05F235-C847-4165-BA9C-F4B735F00876}</Project>
       <Name>JQSQL</Name>

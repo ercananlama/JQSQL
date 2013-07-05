@@ -5,5 +5,5 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyProduct("JQSQL")]
 [assembly: AssemblyCopyright("Copyright (c) 2013, Ercan Anlama")]
 [assembly: ComVisible(false)]
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion("1.0.0.1")]
+[assembly: AssemblyFileVersion("1.0.0.1")]

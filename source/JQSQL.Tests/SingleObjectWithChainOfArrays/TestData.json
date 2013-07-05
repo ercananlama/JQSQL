@@ -12,24 +12,24 @@
       "Sends": [
         {
           "Content": "Whats up?",
-          "SendDate": "20-01-2013",
+          "SendDate": "2013-01-20",
           "AttachmentCount": 1
         },
         {
           "Content": "Me too. Nice to hear!",
-          "SendDate": "22-01-2013",
+          "SendDate": "2013-01-22",
           "AttachmentCount": 2
         }
       ],
       "Receives": [
         {
           "Content": "Great you?",
-          "SendDate": "21-01-2013",
+          "SendDate": "2013-01-21",
           "AttachmentCount": 0
         },
         {
           "Content": "Ok bye",
-          "SendDate": "25-01-2013",
+          "SendDate": "2013-01-25",
           "AttachmentCount": 1
         }
       ]
@@ -40,14 +40,14 @@
       "Sends": [
         {
           "Content": "How is life going on?",
-          "SendDate": "10-03-2013",
+          "SendDate": "2013-03-10",
           "AttachmentCount": 1
         }
       ],
       "Receives": [
         {
           "Content": "Fine. Nothing new yet! You?",
-          "SendDate": "12-03-2013"
+          "SendDate": "2013-03-12"
         }
       ]
     }

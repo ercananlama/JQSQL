@@ -52,9 +52,9 @@ namespace JQSQL.Tests.ArrayObject
         {
             get
             {
-                yield return new TestCaseData("03-01-2013", "[0].Stocks.Sales[1].Date").SetName("SaleDate");
+                yield return new TestCaseData("2013-01-03", "[0].Stocks.Sales[1].Date").SetName("SaleDate");
                 yield return new TestCaseData("50", "[0].Stocks.Sales[0].ItemCount").SetName("SaleItemCount");
-                yield return new TestCaseData("22-01-2013", "[1].Stocks.Purchases[0].Date").SetName("PurchaseDate");
+                yield return new TestCaseData("2013-01-22", "[1].Stocks.Purchases[0].Date").SetName("PurchaseDate");
                 yield return new TestCaseData("23", "[1].Stocks.Purchases[0].ItemCount").SetName("PurchaseItemCount");
             }
         }
