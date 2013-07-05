@@ -8,7 +8,7 @@ GO
 PRINT 'Generate assembly'
 
 GO
--- Modify the following file as replacing JQSQLOutputFolder with the absolute path of JQSQL built folder in your drive
+-- Modify the following line as replacing JQSQLOutputFolder with the absolute path of JQSQL built folder in your drive
 CREATE ASSEMBLY [jqsql] FROM 'JQSQLOutputFolder\JQSQL.dll'
 GO
 
