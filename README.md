@@ -9,7 +9,42 @@ With JQSQL, you can do the followings:
 	Take average of values in JSON data
 	Retrieve count of items in JSON data
 	Find maximum/minimum of values in JSON data
-	Tansform JSON data to table
+	Transform JSON data to table
+	
+## First look
+
+Below, you see a sample JSON which is stored in a database table.
+
+	
+	[
+	  {
+	    "Participants": [4,6],
+	    "Title": "Happy birthday",
+	    "Messages": [
+	      {
+	        "Sender": 4,
+	        "SendDate": "2013-05-16T22:00:00+03:00",
+	        "Content": "Wish you happy birthday :)",
+	        "Attachments": [
+	          {
+	            "Title": "Cake",
+	            "ItemLink": "url here",
+	            "ItemSize": 90.0
+	          }
+	        ]
+	      },
+	      {
+	        "Sender": 6,
+	        "SendDate": "2013-05-17T00:00:00+03:00",
+	        "Content": "Oh what a nice surprise for me! Thank you dear"
+	      }
+	    ]
+	  }
+	]
+
+And, in the following image, you see samples illustrating how JQSQL works with the table containing the sample JSON.
+	
+![JQSQL count sample](https://github.com/ercananlama/JQSQL/raw/master/doc/CountSampleScreen.png)
 
 ## Installation
 
