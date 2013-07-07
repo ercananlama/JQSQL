@@ -1,3 +1,10 @@
+-- Description: 
+		-- This sql file installs JQSQL in your database. Before executing this file, you need to modify it by the following instructions
+-- Instructions:
+		-- Replace JQSQLOutputFolder with the absolute path of JQSQL built folder in your drive
+		-- Replace DbName with the database name in which you install JQSQL
+		-- Validate the location of System.Core.dll if it points correct location in your drive  
+
 PRINT 'Enable clr'
 
 EXEC sp_configure 'clr enabled', 1;
@@ -8,8 +15,30 @@ GO
 PRINT 'Generate assembly'
 
 GO
--- Modify the following line as replacing JQSQLOutputFolder with the absolute path of JQSQL built folder in your drive
-CREATE ASSEMBLY [jqsql] FROM 'JQSQLOutputFolder\JQSQL.dll'
+-- SQL 2005
+IF (CHARINDEX('9.00', CAST(SERVERPROPERTY('productversion') AS NVARCHAR(20))) = 1)
+BEGIN
+
+	ALTER DATABASE [DbName] SET TRUSTWORTHY ON
+	
+	-- Check if system.core is already installed
+	IF (ASSEMBLYPROPERTY('System.Core', 'SimpleName') IS NULL)
+	BEGIN
+		CREATE ASSEMBLY [System.Core]
+		AUTHORIZATION [dbo]
+		FROM 'C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\v3.5\System.Core.dll'
+		WITH PERMISSION_SET = UNSAFE
+	END
+	
+	CREATE ASSEMBLY [jqsql] FROM 'JQSQLOutputFolder\JQSQL.dll'	
+	WITH PERMISSION_SET = UNSAFE
+END
+ELSE
+BEGIN -- SQL 2008 and higher
+
+	CREATE ASSEMBLY [jqsql] FROM 'JQSQLOutputFolder\JQSQL.dll'
+
+END
 GO
 
 PRINT 'Create schema'

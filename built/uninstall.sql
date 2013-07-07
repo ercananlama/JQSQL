@@ -33,5 +33,12 @@ BEGIN
 	DROP PROCEDURE [jqsql].[totable]
 END
 
-DROP ASSEMBLY [jqsql]
-DROP SCHEMA [jqsql]
+IF (ASSEMBLYPROPERTY('jqsql', 'SimpleName') IS NOT NULL)
+BEGIN
+	DROP ASSEMBLY [jqsql]
+END
+
+IF EXISTS (SELECT * FROM sys.schemas WHERE name = 'jqsql')
+BEGIN
+	DROP SCHEMA [jqsql]
+END

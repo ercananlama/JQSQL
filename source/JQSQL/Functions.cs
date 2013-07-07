@@ -40,7 +40,7 @@ public partial class Functions
     }
 
     [Microsoft.SqlServer.Server.SqlFunction]
-    public static double? Sum(string jsonData, string expression)
+    public static SqlDouble Sum(string jsonData, string expression)
     {
         JSON json = new JSON();
         var searchResult = json.SearchValue(jsonData, expression);
@@ -48,11 +48,15 @@ public partial class Functions
         Calculator calculator = new Calculator();
         var sum = calculator.GetSum(searchResult);
 
-        return sum;
+        if (sum != null)
+        {
+            return new SqlDouble(sum.Value);
+        }
+        return new SqlDouble();
     }
 
     [Microsoft.SqlServer.Server.SqlFunction]
-    public static double? Average(string jsonData, string expression)
+    public static SqlDouble Average(string jsonData, string expression)
     {
         JSON json = new JSON();
         var searchResult = json.SearchValue(jsonData, expression);
@@ -60,7 +64,11 @@ public partial class Functions
         Calculator calculator = new Calculator();
         var average = calculator.GetAverage(searchResult);
 
-        return average;
+        if (average != null)
+        {
+            return new SqlDouble(average.Value);
+        }
+        return new SqlDouble();
     }
 
     [Microsoft.SqlServer.Server.SqlFunction]

@@ -13,18 +13,18 @@ namespace JQSQL.Tests.ArrayObject
         [TestCaseSource("ExpectedValues")]
         public void When_root_node_begins_with_arrays_return_sum_of_all_values(string expression, double expected)
         {
-            var foundPropertyValue = Functions.Sum(JsonTestData, expression);
+            var found = Functions.Sum(JsonTestData, expression);
 
-            Assert.AreEqual(expected, foundPropertyValue);
+            Assert.AreEqual(expected, found.Value);
         }
 
         [Test]
         [TestCaseSource("NotCalculatedElements")]
         public void When_element_not_able_to_aggregated_return_null(string expression)
         {
-            var foundPropertyValue = Functions.Sum(JsonTestData, expression);
+            var found = Functions.Sum(JsonTestData, expression);
 
-            Assert.IsNull(foundPropertyValue);
+            Assert.IsTrue(found.IsNull);
         }
 
         public static IEnumerable<TestCaseData> ExpectedValues
