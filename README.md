@@ -67,10 +67,4 @@ For this step, you have 2 alternatives
 JQSQL is built to work with MS SQL Server with version 2005 and higher. It uses .net framework 3.5. 
 SampleDb is a database backup which was created on MS SQL Server 2008 R2.
 
-## Folder structure
-
-	built: The output of the project which includes files used to install and run JQSQL in MS SQL Server
-	doc: Includes documentation and help
-	lib: Contains 3rd party libraries
-	samples: Sample files (sql scripts) are designed to run over sample database (located in the same directory)
-	source: Contains project source files
+For more information and technical details, please visit [wiki](https://github.com/ercananlama/JQSQL/wiki)
