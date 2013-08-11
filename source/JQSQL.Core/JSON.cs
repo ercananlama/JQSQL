@@ -179,12 +179,15 @@ namespace JQSQL.Core
             {
                 filterEvaluator = (itemValue, filterValue) =>
                 {
-                    if (itemValue.ToReturnString() == filterValue.ToReturnString())
-                    {
-                        return true;
-                    }
-
-                    return false;
+                    return Utils.Comparison.CompareValues(itemValue, filterValue,
+                        (i, f) =>
+                        {
+                            return i == f;
+                        },
+                        (i, f) =>
+                        {
+                            return i.ToReturnString() == f.ToReturnString();
+                        });
                 };
             }
             else if (filter.Filter.FilterType == Elements.JFilter.FilterTypes.GreaterThan)

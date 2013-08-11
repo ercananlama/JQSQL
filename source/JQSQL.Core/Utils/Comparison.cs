@@ -16,7 +16,7 @@ namespace JQSQL.Core.Utils
         /// <param name="dateComparator">Compare function for date values</param>
         /// <param name="longComparator">Compare function for long values</param>
         /// <param name="intComparator">Compare function for int values</param>
-        /// <returns></returns>
+        /// <returns>If comparison is satisfied by given values, then return true. Otherwise, return false.</returns>
         public static bool CompareValues(
             object value1,
             object value2,
@@ -44,6 +44,39 @@ namespace JQSQL.Core.Utils
             {
                 var cValue1 = value1.SafeCast<int>();
                 if (cValue1 != null && intComparator(cValue1.Value, (int)value2))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+        
+        /// <summary>
+        /// Compare given 2 values using correct comparator
+        /// </summary>
+        /// <param name="value1">First value to compare</param>
+        /// <param name="value2">Second value to compare. This value is used to determine which comparator is used</param>
+        /// <param name="dateComparator">Compare function for date values</param>
+        /// <param name="defaultComparator">Default function for other types</param>
+        /// <returns>If comparison is satisfied by given values, then return true. Otherwise, return false.</returns>
+        public static bool CompareValues(
+            object value1,
+            object value2,
+            Func<DateTime, DateTime, bool> dateComparator,
+            Func<object, object, bool> defaultComparator)
+        {
+            if (value2.IsTypeof<DateTime>())
+            {
+                var cValue1 = value1.SafeCast<DateTime>();
+                if (cValue1 != null && dateComparator(cValue1.Value, (DateTime)value2))
+                {
+                    return true;
+                }
+            }
+            else
+            {
+                if (defaultComparator(value1, value2))
                 {
                     return true;
                 }
