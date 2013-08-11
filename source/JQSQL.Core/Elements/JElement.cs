@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace JQSQL.Core
+namespace JQSQL.Core.Elements
 {
     public class JElement
     {
@@ -12,5 +12,6 @@ namespace JQSQL.Core
         public int? IndexNo { get; set; }
         public JElement Parent { get; set; }
         public JElement Child { get; set; }
+        public JAttributeFilter AttributeFilter { get; set; }
     }
 }

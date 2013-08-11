@@ -28,12 +28,11 @@ namespace JQSQL.Tests.SingleObjectWithChainOfArrays
         }
 
         [Test]
-        public void When_given_property_not_found_return_last_accessed_content()
+        public void When_given_property_not_found_return_null()
         {
-            var expectedValue = "{\"Content\":\"Ok bye\",\"SendDate\":\"2013-01-25\",\"AttachmentCount\":1}";
-            var foundPropertyValue = Functions.Value(JsonTestData, "Messages[0].Receives[1].TestProperty");
+            var foundResult = Functions.Value(JsonTestData, "Messages[0].Receives[1].TestProperty");
 
-            Assert.AreEqual(expectedValue, foundPropertyValue);
+            Assert.IsNull(foundResult);
         }
 
         [Test]
@@ -43,6 +42,14 @@ namespace JQSQL.Tests.SingleObjectWithChainOfArrays
             var foundPropertyValue = Functions.Value(JsonTestData, "Messages[0].Receives[1]");
 
             Assert.AreEqual(expectedValue, foundPropertyValue);
+        }
+
+        [TestCaseSource("AttributeProperties")]
+        public void When_given_property_supplied_with_attribute_filter_values(string propertyValue, string propertyName)
+        {
+            var foundPropertyValue = Functions.Value(JsonTestData, propertyName);
+
+            Assert.AreEqual(propertyValue, foundPropertyValue);
         }
 
         public static IEnumerable<TestCaseData> RootProperties
@@ -66,6 +73,20 @@ namespace JQSQL.Tests.SingleObjectWithChainOfArrays
                 yield return new TestCaseData("Thelove", "Messages[0].To").SetName("MessageReceiver");
                 yield return new TestCaseData("Whats up?", "Messages[0].Sends[0].Content").SetName("FirstSentMessageContent");
                 yield return new TestCaseData("2013-01-25", "Messages[0].Receives[1].SendDate").SetName("SecondReceivedMessageDate");
+            }
+        }
+
+        public static IEnumerable<TestCaseData> AttributeProperties
+        {
+            get
+            {
+                yield return new TestCaseData("2013-01-22", "Messages.Sends[AttachmentCount > 1].SendDate").SetName("GreaterThanForInt");
+                yield return new TestCaseData("How is life going on?", "Messages.Sends[SendDate >= \"2013-03-01\"].Content").SetName("GreaterThanOrEqualForDate");
+                yield return new TestCaseData("Thelove", "Messages[Title = \"Heyy\"].To").SetName("EqualForString");
+                yield return new TestCaseData("Whats up?", "Messages.Sends[SendDate <= \"2013-01-20\"].Content").SetName("LessThanOrEqualForDate");
+                yield return new TestCaseData("Great you?", "Messages.Receives[AttachmentCount < 1].Content").SetName("LessThanForInt");
+                yield return new TestCaseData("2013-01-25", "Messages[0].Receives[AttachmentCount > 0].SendDate").SetName("IndexAttributeSeperate");
+                yield return new TestCaseData("Ok bye", "Messages.Receives[SendDate > \"2013-01-20\"][1].Content").SetName("IndexAttributeTogether");
             }
         }
     }

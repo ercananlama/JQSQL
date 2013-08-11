@@ -24,7 +24,7 @@ public partial class Functions
             return null;
         }
 
-        return searchResult.ToString();
+        return searchResult.ToReturnString();
     }
 
     [Microsoft.SqlServer.Server.SqlFunction]

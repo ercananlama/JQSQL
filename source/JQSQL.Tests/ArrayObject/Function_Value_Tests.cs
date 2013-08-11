@@ -36,6 +36,22 @@ namespace JQSQL.Tests.ArrayObject
             Assert.AreEqual(null, foundExpressionValue);
         }
 
+        [TestCaseSource("AttributeProperties")]
+        public void When_given_property_supplied_with_attribute_filter_values(string expectedResult, string expression)
+        {
+            var foundResult = Functions.Value(JsonTestData, expression);
+
+            Assert.AreEqual(expectedResult, foundResult);
+        }
+
+        [TestCaseSource("NotValidAttributeProperties")]
+        public void When_given_property_is_not_applicable_return_null(string expression)
+        {
+            var found = Functions.Value(JsonTestData, expression);
+
+            Assert.IsNull(found);
+        }
+
         public static IEnumerable<TestCaseData> RootProperties
         {
             get
@@ -66,6 +82,35 @@ namespace JQSQL.Tests.ArrayObject
                 yield return new TestCaseData("[3].ProductCode").SetName("Simple root index");
                 yield return new TestCaseData("[5].Stocks.Sales[0]").SetName("Complex root index");
                 yield return new TestCaseData("[0].Stocks.Sales[5]").SetName("Child index");
+                yield return new TestCaseData("[Price > 500][2].ProductCode").SetName("Root index with attribute filter");
+            }
+        }
+
+        public static IEnumerable<TestCaseData> AttributeProperties
+        {
+            get
+            {
+                yield return new TestCaseData("12345", "[Price > 1000].ProductCode").SetName("GreaterThanForInt");
+                yield return new TestCaseData("19", "Stocks.Sales[Date >= \"2013-01-13\"].ItemCount").SetName("GreaterThanOrEqualForDate");
+                yield return new TestCaseData("10", "Stocks.Purchases[Date < \"2013-01-05\"].ItemCount").SetName("LessThanForDate");
+                yield return new TestCaseData("13579", "[Title = \"PhoneWorld\"].ProductCode").SetName("EqualForString");
+                yield return new TestCaseData("2013-01-13", "Stocks.Sales[ItemCount <= 20].Date").SetName("LessThanOrEqualForInt");
+                yield return new TestCaseData("[120,60]", "Stocks.Sales[ItemCount > 50][0].ItemCount").SetName("IndexAttributeTogetherOnChild");
+                yield return new TestCaseData("13579", "[Price > 500][1].ProductCode").SetName("IndexAttributeTogetherOnRoot");
+                yield return new TestCaseData("2013-01-13", "[Price > 500].Stocks.Sales[ItemCount <= 20].Date").SetName("MultipleAttributesSeperate");
+                yield return new TestCaseData("2013-01-03", "[Price > 750].Stocks.Sales[ItemCount > 50][0].Date").SetName("MultipleAttributesSeperateWithIndex");
+                yield return new TestCaseData("12345", "[Title   =          \"MyPhone\"      ].ProductCode").SetName("EqualWithSpaces");
+            }
+        }
+
+        public static IEnumerable<TestCaseData> NotValidAttributeProperties
+        {
+            get
+            {
+                yield return new TestCaseData("[Price > \"abc\"].ProductCode").SetName("NotValidConversion");
+                yield return new TestCaseData("[Price1 > 123].ProductCode").SetName("NotAvailableItemInFilter");
+                yield return new TestCaseData("[Price > 500].ProductCode1").SetName("NotAvailableItemKey");
+                yield return new TestCaseData("[Price & 500].ProductCode").SetName("UnknownTokenInFilter");
             }
         }
     }

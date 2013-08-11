@@ -31,6 +31,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup />
   <ItemGroup>
     <Reference Include="SimpleJson">
       <HintPath>..\..\lib\SimpleJson.dll</HintPath>
@@ -45,14 +46,20 @@
   <ItemGroup>
     <Compile Include="Data\DataCalculator.cs" />
     <Compile Include="Data\DataConverter.cs" />
-    <Compile Include="ExpressionParser.cs" />
+    <Compile Include="Parser\ExpressionParser.cs" />
     <Compile Include="Extensions\Conversion.cs" />
-    <Compile Include="JElement.cs" />
+    <Compile Include="Elements\JAttribute.cs" />
+    <Compile Include="Elements\JAttributeFilter.cs" />
+    <Compile Include="Parser\AttributeFilterParser.cs" />
+    <Compile Include="Elements\JElement.cs" />
+    <Compile Include="Elements\JFilter.cs" />
     <Compile Include="JSON.cs" />
+    <Compile Include="Parser\FilterParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-	<Compile Include="..\CommonAssemblyInfo.cs">
+    <Compile Include="..\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Utils\Comparison.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

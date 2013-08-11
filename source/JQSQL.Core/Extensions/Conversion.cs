@@ -44,6 +44,30 @@ namespace JQSQL.Core.Extensions
             return null;
         }
 
+        private static int? ConvertToInt(this object valueToConvert)
+        {
+            if (valueToConvert == null)
+                return null;
+
+            int cValue;
+            if (int.TryParse(valueToConvert.ToString(), out cValue))
+                return cValue;
+
+            return null;
+        }
+
+        private static long? ConvertToLong(this object valueToConvert)
+        {
+            if (valueToConvert == null)
+                return null;
+
+            long cValue;
+            if (long.TryParse(valueToConvert.ToString(), out cValue))
+                return cValue;
+
+            return null;
+        }
+
         public static Nullable<T> SafeCast<T>(this object valueToConvert) where T : struct
         {
             object val = null;
@@ -58,6 +82,14 @@ namespace JQSQL.Core.Extensions
             else if (typeof(T) == typeof(bool))
             {
                 val = valueToConvert.ConvertToBoolean();
+            }
+            else if (typeof(T) == typeof(int))
+            {
+                val = valueToConvert.ConvertToInt();
+            }
+            else if (typeof(T) == typeof(long))
+            {
+                val = valueToConvert.ConvertToLong();
             }
 
             if (val != null)
@@ -99,6 +131,11 @@ namespace JQSQL.Core.Extensions
         public static bool IsPrimitive(this object value)
         {
             return !(value is SimpleJson.JsonArray || value is SimpleJson.JsonObject);
+        }
+
+        public static bool IsNumeric(this string value)
+        {
+            return SafeCast<int>(value) == null;
         }
 
         public static string ToReturnString(this object value)
