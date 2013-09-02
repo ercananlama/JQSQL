@@ -46,6 +46,14 @@ And, in the following image, you see samples illustrating how JQSQL works with t
 	
 ![JQSQL count sample](https://github.com/ercananlama/JQSQL/raw/master/doc/CountSampleScreen.png)
 
+## Technical requirements and specification
+
+JQSQL is built to work with MS SQL Server with version 2005 and higher. It uses .net framework 3.5.
+JQSQL uses JSON query framework called JQDotNet. In order to use query expressions properly and learn more about JSON query, 
+please visit (http://jqdotnet.com).
+
+SampleDb is a database backup which was created on MS SQL Server 2008 R2.
+
 ## Installation
 
 To be able to use JQSQL with MS SQL Server, you need to install it first. 
@@ -61,10 +69,5 @@ For this step, you have 2 alternatives
 	In built folder, you find a small application named JQSQL.Management.exe. 
 	With this tool, you can install JQSQL in your MS SQL Server databases.
 	This is the recommended way in most cases.
-
-## Technical requirements and specification
-
-JQSQL is built to work with MS SQL Server with version 2005 and higher. It uses .net framework 3.5. 
-SampleDb is a database backup which was created on MS SQL Server 2008 R2.
 
 For more information and technical details, please visit [wiki](https://github.com/ercananlama/JQSQL/wiki)
