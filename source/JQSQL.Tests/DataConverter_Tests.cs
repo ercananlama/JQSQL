@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using NUnit.Framework;
 using System.IO;
-using JQSQL.Core.Data;
+//
+using JQDotNet;
 
-namespace JQSQL.Core.Tests
+namespace JQSQL.Tests
 {
     [TestFixture]
     public class DataConverter_Tests
@@ -15,7 +16,7 @@ namespace JQSQL.Core.Tests
         private string jsonTestData;
 
         [TestFixtureSetUp]
-        public void FunctionTests_SetUp()
+        public void DataConverter_Tests_SetUp()
         {
             using (StreamReader reader = new StreamReader(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, TestDataFile)))
             {
@@ -26,8 +27,7 @@ namespace JQSQL.Core.Tests
         [Test]
         public void When_given_expr_refers_dictionary_return_keys_as_columns()
         {
-            JSON json = new JSON();
-            var searchResult = json.SearchValue(jsonTestData, "Messages[0]");
+            var searchResult = JSONQuery.GetValue(jsonTestData, "Messages[0]");
 
             Converter converter = new Converter();
             var data = converter.ConvertToRecord(searchResult);
@@ -49,8 +49,7 @@ namespace JQSQL.Core.Tests
         [Test]
         public void When_given_expr_refers_value_array_return_multiple_rows_with_single_column()
         {
-            JSON json = new JSON();
-            var searchResult = json.SearchValue(jsonTestData, "Messages.Sends.Content");
+            var searchResult = JSONQuery.GetValue(jsonTestData, "Messages.Sends.Content");
 
             Converter converter = new Converter();
             var data = converter.ConvertToRecord(searchResult);
@@ -66,8 +65,7 @@ namespace JQSQL.Core.Tests
         [Test]
         public void When_given_expr_refers_object_array_return_multiple_rows_with_multiple_columns_based_on_first_row()
         {
-            JSON json = new JSON();
-            var searchResult = json.SearchValue(jsonTestData, "Messages.Receives");
+            var searchResult = JSONQuery.GetValue(jsonTestData, "Messages.Receives");
 
             Converter converter = new Converter();
             var data = converter.ConvertToRecord(searchResult);
@@ -95,8 +93,7 @@ namespace JQSQL.Core.Tests
         [Test]
         public void When_given_expr_refers_simple_value_return_single_row_with_single_column()
         {
-            JSON json = new JSON();
-            var searchResult = json.SearchValue(jsonTestData, "Messages[0].Sends[0].Content");
+            var searchResult = JSONQuery.GetValue(jsonTestData, "Messages[0].Sends[0].Content");
 
             Converter converter = new Converter();
             var data = converter.ConvertToRecord(searchResult);

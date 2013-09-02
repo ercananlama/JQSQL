@@ -5,9 +5,10 @@ using System.Text;
 using System.Data;
 using System.Collections;
 using Microsoft.SqlServer.Server;
-using JQSQL.Core.Extensions;
+//
+using JQDotNet.Extensions;
 
-namespace JQSQL.Core.Data
+namespace JQSQL
 {
     public class Converter
     {
@@ -104,7 +105,7 @@ namespace JQSQL.Core.Data
         /// <returns>Metada</returns>
         private SqlMetaData GetMetada(string columnName, object value)
         {
-            var dbType = value.GetDbType();
+            var dbType = GetDbType(value);
             if (dbType == SqlDbType.NVarChar)
             {
                 return new SqlMetaData(columnName, dbType, 500);
@@ -152,6 +153,24 @@ namespace JQSQL.Core.Data
                 record.SetValue(index, value.ToString());
             }
             return record;
+        }
+
+        private static SqlDbType GetDbType(object value)
+        {
+            if (value.SafeCast<double>() != null)
+            {
+                return SqlDbType.Float;
+            }
+            else if (value.SafeCast<DateTime>() != null)
+            {
+                return SqlDbType.DateTime;
+            }
+            else if (value.SafeCast<bool>() != null)
+            {
+                return SqlDbType.Bit;
+            }
+            
+            return SqlDbType.NVarChar;
         }
     }
 }

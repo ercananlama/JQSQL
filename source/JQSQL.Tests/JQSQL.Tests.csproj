@@ -6,7 +6,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{FCB18B19-1527-409C-9811-77F8A06F2185}</ProjectGuid>
+    <ProjectGuid>{A22175CC-1F7F-40EE-9A2E-DAC26E89E40D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>JQSQL.Tests</RootNamespace>
@@ -32,10 +32,10 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
-  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="JQDotNet">
+      <HintPath>..\..\lib\JQDotNet.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework, Version=2.6.1.12217, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\nunit.framework.dll</HintPath>
@@ -57,40 +57,22 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ArrayObject\Base_Function_Tests.cs" />
-    <Compile Include="ArrayObject\Function_Count_Tests.cs" />
-    <Compile Include="ArrayObject\Function_Sum_Tests.cs" />
-    <Compile Include="ArrayObject\Function_Value_Tests.cs" />
-    <Compile Include="Base_Function_Tests.cs" />
-    <Compile Include="SingleObjectWithChainOfArrays\Function_Count_Tests.cs" />
-    <Compile Include="SingleObjectWithChainOfArrays\Function_Min_Max_Tests.cs" />
-    <Compile Include="SingleObjectWithChainOfArrays\Function_Average_Tests.cs" />
-    <Compile Include="SingleObjectWithChainOfArrays\Function_Sum_Tests.cs" />
-    <Compile Include="SingleObjectWithChainOfArrays\Function_Value_Tests.cs" />
+    <Compile Include="DataConverter_Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="..\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="SingleObjectWithChainOfArrays\Base_Function_Tests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\JQSQL.Core\JQSQL.Core.csproj">
-      <Project>{26FE5303-7089-405A-8DFB-2405D55B2EEA}</Project>
-      <Name>JQSQL.Core</Name>
-    </ProjectReference>
+    <None Include="TestData.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\JQSQL\JQSQL.csproj">
       <Project>{EA05F235-C847-4165-BA9C-F4B735F00876}</Project>
       <Name>JQSQL</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup />
-  <ItemGroup>
-    <None Include="ArrayObject\TestData.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SingleObjectWithChainOfArrays\TestData.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
