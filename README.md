@@ -10,7 +10,7 @@ With JQSQL, you can do the followings:
 	Retrieve count of items in JSON data
 	Find maximum/minimum of values in JSON data
 	Transform JSON data to table
-	
+
 ## First look
 
 Below, you see a sample JSON which is stored in a database table.
@@ -49,10 +49,11 @@ And, in the following image, you see samples illustrating how JQSQL works with t
 ## Technical requirements and specification
 
 JQSQL is built to work with MS SQL Server with version 2005 and higher. It uses .net framework 3.5.
-JQSQL uses JSON query framework called JQDotNet. In order to use query expressions properly and learn more about JSON query, 
-please visit (http://jqdotnet.com).
+It uses JSON query framework called JQDotNet. In order to use query expressions properly and learn more about JSON query, 
+please visit http://jqdotnet.com.
 
-SampleDb is a database backup which was created on MS SQL Server 2008 R2.
+There is a database backup named SampleDb which was created on MS SQL Server 2008 R2 with the 
+intention of demonstration of JSON query in MS SQL Server environment.
 
 ## Installation
 
