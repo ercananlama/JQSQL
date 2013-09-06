@@ -71,4 +71,11 @@ For this step, you have 2 alternatives
 	With this tool, you can install JQSQL in your MS SQL Server databases.
 	This is the recommended way in most cases.
 
-For more information and technical details, please visit [wiki](https://github.com/ercananlama/JQSQL/wiki)
+## Folder structure
+
+built: The output of the project which includes files used to install and run JQSQL in MS SQL Server
+lib: Contains 3rd party libraries
+samples: Sample files (sql scripts) are designed to run over sample database (located in the same directory)
+source: Contains project source files	
+	
+For the documentation, news and samples, please visit the [official site](http://jqsql.com)
