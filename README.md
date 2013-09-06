@@ -42,14 +42,13 @@ Below, you see a sample JSON which is stored in a database table.
 	  }
 	]
 
-And, in the following image, you see samples illustrating how JQSQL works with the table containing the sample JSON.
+And, in the following image, you see the sample illustrating how JQSQL works with the table containing the sample JSON.
 	
 ![JQSQL count sample](https://github.com/ercananlama/JQSQL/raw/master/doc/CountSampleScreen.png)
 
 ## Technical requirements and specification
 
-JQSQL is built to work with MS SQL Server with version 2005 and higher. It uses .net framework 3.5.
-It uses JSON query framework called JQDotNet. In order to use query expressions properly and learn more about JSON query, 
+JQSQL is built to work with MS SQL Server with version 2005 and higher. It uses .net framework 3.5 and JSON query framework called JQDotNet. In order to use query expressions properly and learn more about JSON query, 
 please visit http://jqdotnet.com.
 
 There is a database backup named SampleDb which was created on MS SQL Server 2008 R2 with the 
