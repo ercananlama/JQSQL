@@ -77,4 +77,4 @@ For this step, you have 2 alternatives
 	samples: Sample files (sql scripts) are designed to run over sample database (located in the same directory)
 	source: Contains project source files	
 	
-For the documentation, news and samples, please visit the [official site](http://jqsql.com)
+For the documentation, news and samples, please visit the [official site](http://jqsql.ercananlama.com)
