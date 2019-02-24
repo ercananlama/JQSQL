@@ -75,6 +75,4 @@ For this step, you have 2 alternatives
 	built: The output of the project which includes files used to install and run JQSQL in MS SQL Server
 	lib: Contains 3rd party libraries
 	samples: Sample files (sql scripts) are designed to run over sample database (located in the same directory)
-	source: Contains project source files	
-	
-For the documentation, news and samples, please visit the [official site](http://jqsql.ercananlama.com)
+	source: Contains project source files
